@@ -6,6 +6,37 @@ Built to run **100% offline-first** (including a zero-backend-cost **Web Demo Mo
 
 ---
 
+## Run v0.1 locally
+
+Requires Node.js 26.13+ (see `.node-version`) and pnpm 12.16.1 (pinned in `package.json`).
+
+```sh
+pnpm install
+pnpm dev
+```
+
+Open the local URL printed by Vite (normally `http://127.0.0.1:5173`). Use one Gains tab per origin: OPFS SAH pool storage is exclusive. Additional tabs or browsers that restrict OPFS use an explicitly labeled **Memory Fallback**, whose data disappears on reload/close.
+
+Open **Settings → Demo workspace**, then click **Seed Demo Data** to load 10 exercises, 2 routines, 6 completed workouts (90 sets), and 14 days of weight and nutrition records. Today's sample nutrition is **1,200 kcal / 88 g protein**. Seeding replaces existing demo records while preserving preferences; **Reset Demo DB** clears all rows and preferences after confirmation. Settings includes a live inspector of all 19 application tables.
+
+Check **Overview, Train, Nutrition, Progress, and Settings** on desktop and at **390 × 844**. Routines and Exercises are available inside Train; the old `/workout` and `/analytics` URLs redirect to Train and Progress. Switch **Light / Dark / System**, **Factor / Open**, and **lb / kg** in Settings, then refresh and close/reopen the tab to verify persistence. Use **Edit overview** to reorder Training, Weight, and Nutrition. Hover charts to see date/value tooltips; touch pins a selection, and focused charts support Arrow keys, Home, End, and Escape. Open a chart heading for ranges and its accessible data table. Reset and confirm all table counts return to zero. Train, routines, the exercise library, and nutrition browse existing local records; workout logging, routine editing, and food entry remain assigned to their planned releases. The theme/order migration preserves existing data.
+
+Automated checks:
+
+```sh
+pnpm lint
+pnpm format:check
+pnpm typecheck
+pnpm test
+pnpm build
+```
+
+Tests run migrations and demo data against the same SQLite WASM engine used by the web app. `packages/db/migrations/*.sql` can also be consumed by D1 and native clients. After generating a new Drizzle migration with `pnpm --filter @gains/db generate`, run `pnpm db:embed` and `pnpm format` to update the browser bundle; the SQL/bundle parity test guards against drift. SQLite query writes should use the worker's transaction-backed `batch` API when multiple statements must commit together. Live queries declare their table subscriptions and additional query dependencies.
+
+The minimal Hono API exposes `/api/health`. After `pnpm build`, `pnpm --filter @gains/api dev` serves the built SPA and API through Wrangler. The demo makes no API calls or cloud sync requests. An already loaded app works without a network connection; offline reload/install support is reserved for a future service worker.
+
+---
+
 ## Core Pillars
 
 1. **Gym Tracking & Science-Based Hypertrophy**:
@@ -47,6 +78,7 @@ Built to run **100% offline-first** (including a zero-backend-cost **Web Demo Mo
 - [05 — AI Coach, MCP Server & Plugins Spec](file:///Users/shouryan/Programming/gains/docs/05-ai-coach-and-mcp-spec.md)
 - [06 — Native iOS, Apple Watch & Fitness Wrapped Spec](file:///Users/shouryan/Programming/gains/docs/06-ios-watch-and-wrapped-spec.md)
 - [07 — Phased Release Roadmap (`v0.1` – `v1.5`)](file:///Users/shouryan/Programming/gains/docs/07-release-roadmap.md)
+- [08 — Design Language](docs/08-design-language.md) — responsive layouts, two color presets, typography, charts, and workout interactions
 - [Linear Tickets & Agent Import Prompt](file:///Users/shouryan/Programming/gains/docs/linear-tickets.md)
 - [Exercise Catalog Documentation](file:///Users/shouryan/Programming/gains/catalog/README.md)
 

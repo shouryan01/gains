@@ -1,0 +1,12 @@
+name = "gains"
+main = "src/index.ts"
+compatibility_date = "2026-10-31"
+
+[assets]
+directory = "../web/dist"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+# Resolve this workspace dependency explicitly even under an ancestor Yarn PnP install.
+[alias]
+hono = "./node_modules/hono/dist/index.js"

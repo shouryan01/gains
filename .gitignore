@@ -62,6 +62,6 @@ xcuserdata/
 *.xcodeproj/xcuserdata/
 DerivedData/
 .build/
-Packages/
+/ios/**/Packages/
 *.moved-aside
 *.xcuserstate

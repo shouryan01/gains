@@ -1,0 +1,2 @@
+ALTER TABLE `user_settings` ADD `color_preset` text DEFAULT 'factor' NOT NULL;--> statement-breakpoint
+ALTER TABLE `user_settings` ADD `overview_order` text DEFAULT '["training","weight","nutrition"]' NOT NULL;

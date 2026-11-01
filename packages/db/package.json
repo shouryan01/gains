@@ -1,0 +1,22 @@
+{
+  "name": "@gains/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@gains/shared": "workspace:*",
+    "drizzle-orm": "^0.45.4"
+  },
+  "devDependencies": {
+    "@sqlite.org/sqlite-wasm": "^3.54.1-build1"
+  }
+}

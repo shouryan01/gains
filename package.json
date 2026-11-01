@@ -1,0 +1,29 @@
+{
+  "name": "gains",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @gains/web dev",
+    "build": "pnpm --filter @gains/web... build && pnpm --filter @gains/api build",
+    "lint": "oxlint apps packages scripts vitest.config.ts",
+    "format": "oxfmt --ignore-path .gitignore --ignore-path .oxfmtignore apps packages scripts package.json pnpm-workspace.yaml tsconfig.base.json vitest.config.ts .oxlintrc.json",
+    "format:check": "oxfmt --check --ignore-path .gitignore --ignore-path .oxfmtignore apps packages scripts package.json pnpm-workspace.yaml tsconfig.base.json vitest.config.ts .oxlintrc.json",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "db:embed": "node scripts/embed-migrations.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "drizzle-kit": "^0.31.11",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=26.13.0"
+  },
+  "packageManager": "pnpm@12.16.1"
+}
