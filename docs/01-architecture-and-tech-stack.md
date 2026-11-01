@@ -43,7 +43,7 @@ gains/
 - **Framework**: React 19 SPA + TypeScript + Vite
 - **Routing**: `@tanstack/react-router` (type-safe file-based routing with search param validation via `zod`)
 - **UI Primitives & Styling**:
-  - **Tailwind CSS v4** with CSS-first theme tokens, iOS-inspired glassmorphism, dark/light mode, and tabular numeric typography (`font-variant-numeric: tabular-nums`) for workout timers and weight/rep tables.
+  - **Tailwind CSS v4** with semantic theme tokens, restrained neutral surfaces, independent appearance (System/Light/Dark) and color preset (Factor/Open) preferences, and tabular numeric typography (`font-variant-numeric: tabular-nums`). Desktop and iPhone use distinct compositions governed by [the design language specification](08-design-language.md).
   - **Shadcn UI (built on `@base-ui/react`)** for accessible dialogs, sheets, popovers, comboboxes, and menus.
   - **Motion (`motion/react`)** for smooth iOS-style bottom drawers, workout player transitions, and Fitness Wrapped story slides.
 - **Data Visualization**:
